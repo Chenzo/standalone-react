@@ -1,14 +1,38 @@
 
 
-console.log("Called from two.js");
+function Threeprop(props) {
+    return <p>This was passed: {props.name}</p>;
+}
 
-var utils = {
-    generateRandom: function() {
-        return Math.random();    
-    },
-    sum: function(a, b) {
-        return a + b;
-    }
-};
+const element = (
+    <div>
+        <h4>THREE</h4>
+        <Threeprop name="Vince" />
+    </div>
+    );
+ReactDOM.render(
+    element,
+    document.getElementById("three")
+)
 
-//export default utils;
+
+
+
+
+/* FOUR */
+function Fourapp() {
+    return (
+        <div>
+            <h4>FOUR</h4>
+            <Threeprop name="Just trying" />
+            <Threeprop name="To Do A" />
+            <Threeprop name="Loop" />
+        </div>
+    )
+}
+
+
+ReactDOM.render(
+    <Fourapp />,
+    document.getElementById('four')
+  );

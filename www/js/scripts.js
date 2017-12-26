@@ -10,6 +10,40 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 console.log("This is react right here:");
 
+function callThis() {
+	return "This is called from a function";
+}
+
+var myElem = React.createElement(
+	"div",
+	{ className: "whyClassname" },
+	React.createElement(
+		"h4",
+		null,
+		"ONE"
+	),
+	React.createElement(
+		"p",
+		null,
+		"Hello world"
+	),
+	React.createElement(
+		"p",
+		null,
+		callThis()
+	),
+	React.createElement(
+		"p",
+		null,
+		"Start Time ",
+		React.createElement(
+			"span",
+			{ className: "dynamic" },
+			new Date().toLocaleTimeString()
+		)
+	)
+);
+
 var Greeting = function (_React$Component) {
 	_inherits(Greeting, _React$Component);
 
@@ -22,11 +56,7 @@ var Greeting = function (_React$Component) {
 	_createClass(Greeting, [{
 		key: "render",
 		value: function render() {
-			return React.createElement(
-				"p",
-				null,
-				"Hello world Yes joe, this updates for everyone"
-			);
+			return myElem;
 		}
 	}]);
 
@@ -34,6 +64,33 @@ var Greeting = function (_React$Component) {
 }(React.Component);
 
 ReactDOM.render(React.createElement(Greeting, null), document.getElementById('root'));
+
+/* TWO */
+
+function doRender() {
+	var myElem = React.createElement(
+		"div",
+		null,
+		React.createElement(
+			"h4",
+			null,
+			"TWO"
+		),
+		React.createElement(
+			"p",
+			null,
+			"Current Time ",
+			React.createElement(
+				"span",
+				{ className: "dynamic" },
+				new Date().toLocaleTimeString()
+			)
+		)
+	);
+	ReactDOM.render(myElem, document.getElementById('two'));
+}
+doRender();
+setInterval(doRender, 1000);
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -140,15 +197,41 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })("undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : undefined);
 "use strict";
 
-console.log("Called from two.js");
+function Threeprop(props) {
+    return React.createElement(
+        "p",
+        null,
+        "This was passed: ",
+        props.name
+    );
+}
 
-var utils = {
-    generateRandom: function generateRandom() {
-        return Math.random();
-    },
-    sum: function sum(a, b) {
-        return a + b;
-    }
-};
+var element = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h4",
+        null,
+        "THREE"
+    ),
+    React.createElement(Threeprop, { name: "Vince" })
+);
+ReactDOM.render(element, document.getElementById("three"));
 
-//export default utils;
+/* FOUR */
+function Fourapp() {
+    return React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h4",
+            null,
+            "FOUR"
+        ),
+        React.createElement(Threeprop, { name: "Just trying" }),
+        React.createElement(Threeprop, { name: "To Do A" }),
+        React.createElement(Threeprop, { name: "Loop" })
+    );
+}
+
+ReactDOM.render(React.createElement(Fourapp, null), document.getElementById('four'));

@@ -14,7 +14,7 @@ Update CacheBuster:
 
 
 var gulp = require('gulp'),
-	//sass = require('gulp-sass'),
+	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
@@ -92,7 +92,7 @@ gulp.task('default', ['javascripting'] ,function() { //'styles',
 	    proxy: 'http://localhost:8088'
 	});
 	gulp.watch('./src/js/**/*.js',['js']);
-    //gulp.watch('./src/scss/**/*.scss',['styles']);
+    gulp.watch('./src/scss/**/*.scss',['styles']);
     gulp.watch("./www/*.php").on('change', browserSync.reload);
     gulp.watch("./www/*.html").on('change', browserSync.reload);
     gulp.watch("./www/**/*.php").on('change', browserSync.reload);

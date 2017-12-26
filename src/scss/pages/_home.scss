@@ -1,20 +1,30 @@
 
-.home {
+body.testing_template {
+	padding: 40px;
+}
+
+h1 {
+	margin-bottom: 40px;
+}
+h4 {
+	margin-bottom: 10px;
+	color: #fff;
+}
+
+.single {
+	background-color: #444444;
+	padding: 20px;
+	margin: 0 20px 20px 0;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 9px;
+	border: 1px solid #777777;
+	-webkit-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.56);
+	-moz-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.56);
+	box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.56);
+}
 
 
-		.top {
-			h1 {
-				display: block;
-				margin: 20px auto;
-				text-align: center;
-			}
-
-			textarea {
-				margin: 0 auto;
-				display: block;
-				color: #222222;
-			}
-
-		}
-
+.dynamic {
+	color: gold;
 }
