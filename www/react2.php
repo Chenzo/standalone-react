@@ -9,9 +9,21 @@
 
         <link rel="stylesheet" href="/css/styles.css?cb=1234" />
 
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+
     </head>
     <body class="testing_template">
-        <a href="standalone.html">Stand Alone Test 1</a>
-        <a href="react2.php">React 2</a> 
+        
+    
+    <h1>Just React.JS only</h1>
+
+    <section>
+
+        <div class="single" id="root">*</div>
+
+    </section>
+            
     </body>
 </html>
