@@ -37,9 +37,9 @@ var scriptsPath = './src/js/';
 //Loop through a directory and get the directories within...
 function getFolders(dir){
     return fs.readdirSync(dir)
-      .filter(function(file){
+    .filter(function(file){
         return fs.statSync(path.join(dir, file)).isDirectory();
-      });
+    });
 }
 
 
@@ -72,7 +72,7 @@ gulp.task('updateCacheBuster', function(){
 
 
 
-gulp.task('javascripting', function() {
+gulp.task('javascripting-old', function() {
 	gulp.src('./src/js/**/*.js')
 	.pipe(sourcemaps.init())
 	.pipe(babel({
@@ -89,7 +89,7 @@ gulp.task('javascripting', function() {
 
 
 
-gulp.task('js3', function() {
+gulp.task('javascripting', function() {
 	var folders = getFolders(scriptsPath);
 
 	folders.map(function(folder) {
@@ -110,11 +110,11 @@ gulp.task('js3', function() {
 
 
 
-//Learning...
+//Learning... function not used. left in place for future me.
 gulp.task('js2', function() {
     var dirs = fs.readdirSync('./src/js/');
     console.log(dirs);
-	// do something with your directories
+	// do something with directories
 	
 	fs.readdirSync('./src/js/')
 	.filter(function(file){
