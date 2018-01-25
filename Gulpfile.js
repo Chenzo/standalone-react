@@ -10,9 +10,6 @@ Update CacheBuster:
 */
 
 
-
-
-
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
@@ -20,10 +17,35 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
     pump = require('pump'),
-	replace = require('gulp-replace');
+	replace = require('gulp-replace'),
+	fs = require('fs'),
+	path = require('path'),
 	babel = require('gulp-babel');
 
 var browserSync = require('browser-sync').create();
+
+
+var scriptsPath = './src/js/';
+
+
+
+
+
+
+
+
+//Loop through a directory and get the directories within...
+function getFolders(dir){
+    return fs.readdirSync(dir)
+      .filter(function(file){
+        return fs.statSync(path.join(dir, file)).isDirectory();
+      });
+}
+
+
+
+
+
 
 
 
@@ -64,6 +86,49 @@ gulp.task('javascripting', function() {
 	.pipe(sourcemaps.write('/maps'))
 	.pipe(gulp.dest('./www/js/'));
 });
+
+
+
+gulp.task('js3', function() {
+	var folders = getFolders(scriptsPath);
+
+	folders.map(function(folder) {
+		return gulp.src(path.join(scriptsPath, folder, '/*.js'))
+		.pipe(sourcemaps.init())
+		.pipe(babel({
+			presets: ['env', 'react']
+		}).on('error', console.error.bind(console)))
+		.pipe(concat(folder + '.js'))
+		.pipe(gulp.dest('./www/js'))
+		.pipe(uglify())
+		.pipe(rename(folder + '.min.js'))
+		.pipe(sourcemaps.write('/maps'))
+		.pipe(gulp.dest('./www/js/'));
+	})
+});
+
+
+
+
+//Learning...
+gulp.task('js2', function() {
+    var dirs = fs.readdirSync('./src/js/');
+    console.log(dirs);
+	// do something with your directories
+	
+	fs.readdirSync('./src/js/')
+	.filter(function(file){
+	  console.log(fs.statSync(path.join('./src/js/', file)).isDirectory());
+	});
+})
+
+
+
+
+
+
+
+
 
 
 
