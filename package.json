@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "standalone_react",
   "version": "3.0.0",
-  "description": "Starting BoilerPlate project",
+  "description": "Attempt to make a react project that doesn't need a specific server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
